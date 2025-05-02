@@ -59,8 +59,8 @@ spec:
           env:
           - name: GITHUB_TOOLSETS
             value: "{{ join "," .Values.env.toolsets }}"
-          - name: 
-            value: ""
+          - name: GITHUB_PERSONAL_ACCESS_TOKEN
+            value: "{{ .Values.env.personalAccessToken }}"
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
