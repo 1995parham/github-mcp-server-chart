@@ -1,2 +1,4 @@
-# github-mcp-server-chart
-Helm chart GitHub's official MCP Server 
+# Github MCP Server Chart
+
+## Introduction
+
