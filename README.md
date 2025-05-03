@@ -1,4 +1,4 @@
-# GitHub MCP Server Chart
+# GitHub MCP Server Chart (Work in progress 🚧)
 
 ## Introduction
 
