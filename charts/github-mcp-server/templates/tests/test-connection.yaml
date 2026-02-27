@@ -8,15 +8,9 @@ metadata:
     "helm.sh/hook": test
 spec:
   containers:
-    - name: wget
+    - name: test
       image: busybox
       command: ['sh', '-c']
       args:
-        - 'wget --header "Authorization: Bearer $GITHUB_PERSONAL_ACCESS_TOKEN" {{ include "github-mcp-server.fullname" . }}:{{ .Values.service.port }}'
-      env:
-        - name: GITHUB_PERSONAL_ACCESS_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: {{ .Values.env.existingSecret | default (include "github-mcp-server.fullname" .) }}
-              key: GITHUB_PERSONAL_ACCESS_TOKEN
+        - 'nc -z {{ include "github-mcp-server.fullname" . }} {{ .Values.service.port }}'
   restartPolicy: Never
