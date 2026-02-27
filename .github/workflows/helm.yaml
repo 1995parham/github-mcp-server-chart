@@ -29,7 +29,7 @@ jobs:
         uses: helm/kind-action@v1.14.0
 
       - name: run chart-testing (install)
-        run: ct install --all
+        run: ct install --all --helm-extra-set-args "--set env.personalAccessToken=${{ secrets.GITHUB_TOKEN }}"
 
   release:
     runs-on: ubuntu-latest
