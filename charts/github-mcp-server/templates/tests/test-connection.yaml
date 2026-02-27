@@ -10,6 +10,9 @@ spec:
   containers:
     - name: wget
       image: busybox
-      command: ['wget']
-      args: ['{{ include "github-mcp-server.fullname" . }}:{{ .Values.service.port }}']
+      command: ['sh', '-c']
+      args:
+        - |
+          wget -S {{ include "github-mcp-server.fullname" . }}:{{ .Values.service.port }} 2>&1; rc=$?;
+          if [ $rc -eq 0 ] || [ $rc -eq 8 ]; then exit 0; else exit $rc; fi
   restartPolicy: Never
